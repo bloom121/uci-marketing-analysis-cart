@@ -93,7 +93,7 @@ self-employed  tertiary         0.160864            833
 
 ```
 
-## deepSeek
+## deepseek
 
 "Give me the script which loads the UCI Bank Marketing Dataset, splits 20% into testing, builds CART, outputs training set sample number, accuracy, conversion rate, same for testing. Also, output top ten groups based on job and education with highest conversion rates and show sample numbers, nothing else."
 
@@ -143,7 +143,7 @@ Top 10 Job/Education Groups:
 
 * ChatGPT, deepseek, and Grok, they are all great for generating such scripts, but one needs to iterate.
 
-* CART had always amazed me, but I never paid enough attention to them because they felt too good to be true; besides, trees and matrices didn’t seem to go hand in hand. Recently, I spoke with my ex-colleague from our machine learning days at USI, [Artiom Kovnatsky](https://www.artiomkovnatsky.com/), who told me he’s been using those tree models quite heavily in real-world commercial projects. So it turns out what they say is true — simplicity wins.
+* CART had always amazed me, but I never paid enough attention to them because they felt too good to be true; besides, trees and matrices didn’t seem to go hand in hand. Recently, I spoke with my ex-colleague from our machine learning days at USI, [Artiom Kovnatsky](https://www.artiomkovnatsky.com/), who told me he’s been using those tree models quite heavily in real-world commercial projects. So it is true what they say — simplicity wins.
    
 ## References 
 
