@@ -13,7 +13,7 @@
 
 ## The UCI Bank Marketing Campaign Decision Tree Analysis
 
-This project analyzes [the UCI Bank Marketing Dataset](https://archive.ics.uci.edu/dataset/222/bank+marketing) using CART to predict customer conversion rate.
+This project analyzes [the UCI Bank Marketing Dataset](https://archive.ics.uci.edu/dataset/222/bank+marketing) using CART to predict customer subscription (a binary variable). A conversion rate is the average of the subscription value for a chosen data subset (market segment).
 
 ## Python3 and miniconda (Ubuntu 22.04)
 
@@ -135,15 +135,15 @@ Top 10 Job/Education Groups:
 
 * As Leo Breiman has noted himself in 2001, CART is not the most accurate method.
 
-* CART is great in that it handles any data (missing, mixing continuous with nominal), and is automatic. It is also fast: no inverses, no learning, no GPUs needed. Ideal for exploratory data analysis and rough estimates.
+* CART is great in that it handles any data (missing, mixing continuous with nominal), and is automatic. It is also fast: no inverses, no learning, no GPUs needed. Ideal for rough estimates.
 
-* I would not spend too much time on the generated trees, their leafs (clusters), rules, variable importance weights.
+* I would not spend too much time on the generated trees, clusters/rules, variable importance.
 
-* pip and Jupyter Notebook are not that useful.
+* pip is horrible, but conda solves the problem. Jupyter Notebook is not that useful.
 
-* ChatGPT, deepseek, and Grok, they are all great for generating such scripts, but one needs to iterate.
+* ChatGPT, deepseek, and Grok are great for such scripts, but one needs to debug/iterate.
 
-* CART had always amazed me, but I never paid enough attention to them because they felt too good to be true; besides, trees and matrices didn’t seem to go hand in hand. Recently, I spoke with my ex-colleague from our machine learning days at USI, [Artiom Kovnatsky](https://www.artiomkovnatsky.com/), who told me he’s been using those tree models quite heavily in real-world commercial projects. So it is true what they say — simplicity wins.
+* [Artiom Kovnatsky](https://www.artiomkovnatsky.com/) uses CART in real-world commercial projects.
    
 ## References 
 
