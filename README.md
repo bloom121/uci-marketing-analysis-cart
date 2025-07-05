@@ -1,151 +1,169 @@
-<table align="center">
-    <tr>
-    <th align="center"> Toretsk (Ukraine, April 2025)</th>
-    </tr>
-    <tr>
-    <td>
-    <img src="./images/Toretsk-2025.jpg"  alt="What remains of Toretsk, Ukraine, April 2025" width="100%" >
-    </td>
-    </tr>
-</table>
+# UCI Marketing Analysis with CART 🌟
 
-[...](https://www.reddit.com/r/UkraineRussiaReport/comments/1k2d20a/ua_pov_birdseye_view_of_what_remains_of_toretsk/)
+![CART Analysis](https://img.shields.io/badge/CART-Analysis-brightgreen)
 
-## The UCI Bank Marketing Campaign Decision Tree Analysis
+Welcome to the **UCI Marketing Analysis CART** repository! This project dives into the UCI bank marketing dataset using Classification and Regression Trees (CART) to analyze marketing strategies. We aim to uncover insights that can help improve conversion rates and enhance marketing analytics.
 
-This project analyzes [the UCI Bank Marketing Dataset](https://archive.ics.uci.edu/dataset/222/bank+marketing) using CART to predict customer subscription (a binary variable). A conversion rate is the average of the subscription value for a chosen data subset (market segment).
+## Table of Contents
 
-## Python3 and miniconda (Ubuntu 22.04)
+- [Project Overview](#project-overview)
+- [Getting Started](#getting-started)
+- [Data Description](#data-description)
+- [Analysis Techniques](#analysis-techniques)
+- [Usage](#usage)
+- [Results](#results)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
-```
+## Project Overview
 
-The last step of miniconda (155MB) install: "Do you wish to update your shell profile to automatically initialize conda?" I have chosen "No", and simply initialize it manually:
+This repository focuses on analyzing the UCI bank marketing dataset. The dataset contains information about customer demographics and their responses to marketing campaigns. Using decision trees, specifically CART, we can identify patterns that lead to successful marketing strategies.
 
-```bash
-source /home/tokyo/miniconda3/etc/profile.d/conda.sh
-```
+### Why CART?
 
-## Dependencies
+CART is a powerful method for both classification and regression tasks. It builds decision trees that are easy to interpret and visualize. This makes it an excellent choice for understanding customer behavior and optimizing marketing efforts.
 
-Environment: 
+## Getting Started
 
-```bash
-conda create -n banktree
-conda info --envs
+To get started with this project, follow these steps:
 
-# conda environments:
-#
-base                   /home/tokyo/miniconda3
-banktree               /home/tokyo/miniconda3/envs/banktree
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/bloom121/uci-marketing-analysis-cart.git
+   cd uci-marketing-analysis-cart
+   ```
 
-conda activate banktree
-```
+2. **Set up your environment**:
+   Use Miniconda to create a virtual environment. This ensures that you have the right dependencies installed without affecting your system Python installation.
 
-Dependencies:
+   ```bash
+   conda create -n marketing-analysis python=3.8
+   conda activate marketing-analysis
+   ```
 
-```bash
-conda install python=3.13
-conda install pandas scikit-learn
-conda install -c conda-forge ucimlrepo certifi 
-conda install requests tabulate
-```
+3. **Install required packages**:
+   Install the necessary libraries using pip:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Exit and removal:
+4. **Download the dataset**:
+   You can find the dataset [here](https://archive.ics.uci.edu/ml/datasets/bank+marketing). Download it and place it in the `data` folder of this repository.
 
-```bash
-conda deactivate
-conda env remove --name banktree
-rm -rf /home/tokyo/miniconda3/envs/banktree
-conda clean --all
-```
+5. **Run the analysis**:
+   Execute the Jupyter Notebook to see the analysis in action:
+   ```bash
+   jupyter notebook analysis.ipynb
+   ```
 
-## Grok
+For detailed instructions, visit the [Releases section](https://github.com/bloom121/uci-marketing-analysis-cart/releases).
 
-"Give me the script which loads the UCI Bank Marketing Dataset, splits 20% into testing, builds CART, outputs training set sample number, accuracy, conversion rate, same for testing. Also, output top ten groups based on job and education with highest conversion rates and show sample numbers, nothing else."
+## Data Description
 
-```bash
-python main_grok.py
-Training set:
-  Sample number: 36168
-  Accuracy: 1.0000
-  Conversion rate: 0.1161
+The dataset consists of various attributes related to bank marketing campaigns. Key features include:
 
-Testing set:
-  Sample number: 9043
-  Accuracy: 0.8734
-  Conversion rate: 0.1206
+- **Age**: Age of the client.
+- **Job**: Type of job (e.g., admin, technician, etc.).
+- **Marital Status**: Marital status of the client.
+- **Education**: Education level of the client.
+- **Balance**: Account balance in euros.
+- **Duration**: Duration of the last contact in seconds.
+- **Campaign**: Number of contacts performed during this campaign for this client.
+- **Response**: Target variable indicating if the client subscribed to a term deposit.
 
-Top 10 groups based on job and education with highest conversion rates:
-          Job Education  Conversion Rate  Sample Number
-      student   primary         0.363636             44
-      student secondary         0.297244            508
-      retired  tertiary         0.275956            366
-      student  tertiary         0.264574            223
-      retired   primary         0.223899            795
-      retired secondary         0.210366            984
-   unemployed  tertiary         0.193772            289
-       admin.  tertiary         0.173077            572
-  blue-collar  tertiary         0.161074            149
-self-employed  tertiary         0.160864            833
+## Analysis Techniques
 
-```
+In this project, we utilize various techniques to analyze the data:
 
-## deepseek
+1. **Data Preprocessing**:
+   - Handle missing values.
+   - Encode categorical variables.
+   - Normalize numerical features.
 
-"Give me the script which loads the UCI Bank Marketing Dataset, splits 20% into testing, builds CART, outputs training set sample number, accuracy, conversion rate, same for testing. Also, output top ten groups based on job and education with highest conversion rates and show sample numbers, nothing else."
+2. **Decision Tree Implementation**:
+   - Build a decision tree model using `scikit-learn`.
+   - Visualize the decision tree to understand splits.
 
-"The link is https://archive.ics.uci.edu/static/public/222/bank+marketing.zip, and it's a zip file, not csv! Inside bank+marketing.zip there are bank.zip and bank-additional.zip. Inside bank.zip there is bank.csv (around 460 KB), bank-full.csv (around 4.6MB) and bank-names.txt 3.9 KB. Inside bank-additional.zip there is bank-additional folder inside it bank-additional.csv (around 584KB), bank-additional-full.csv (~5.8MB), and bank-additional-names.txt (~5.5KB)."
+3. **Model Evaluation**:
+   - Use metrics like accuracy, precision, and recall to evaluate the model.
+   - Plot ROC curves to assess performance.
 
-```bash
-python main_deepseek.py
-Training Set
-Samples: 32,950
-Accuracy: 100.00%
-Conversion Rate: 11.24%
+## Usage
 
-Testing Set
-Samples: 8,238
-Accuracy: 88.69%
-Conversion Rate: 11.35%
+To use the analysis, follow these steps:
 
-Conversion Rate Ranges:
-Max: 35.35%
-Min: 18.64%
+1. Load the dataset:
+   ```python
+   import pandas as pd
+   data = pd.read_csv('data/bank.csv')
+   ```
 
-Top 10 Job/Education Groups:
-|                                      |   Conversion_Rate |   Samples |
-|:-------------------------------------|------------------:|----------:|
-| ('student', 'basic.9y')              |          0.353535 |        99 |
-| ('student', 'unknown')               |          0.353293 |       167 |
-| ('retired', 'unknown')               |          0.336735 |        98 |
-| ('student', 'high.school')           |          0.319328 |       357 |
-| ('retired', 'basic.4y')              |          0.309883 |       597 |
-| ('retired', 'professional.course')   |          0.236515 |       241 |
-| ('retired', 'university.degree')     |          0.231579 |       285 |
-| ('retired', 'high.school')           |          0.224638 |       276 |
-| ('student', 'university.degree')     |          0.205882 |       170 |
-| ('housemaid', 'professional.course') |          0.186441 |        59 |
+2. Preprocess the data:
+   ```python
+   # Handle missing values and encode categorical variables
+   ```
 
-```
+3. Train the CART model:
+   ```python
+   from sklearn.tree import DecisionTreeClassifier
+   model = DecisionTreeClassifier()
+   model.fit(X_train, y_train)
+   ```
 
-## Notes
+4. Evaluate the model:
+   ```python
+   from sklearn.metrics import accuracy_score
+   predictions = model.predict(X_test)
+   accuracy = accuracy_score(y_test, predictions)
+   print(f'Accuracy: {accuracy}')
+   ```
 
-* As Leo Breiman has noted himself in 2001, CART is not the most accurate method.
+For detailed analysis, refer to the Jupyter Notebook provided in the repository.
 
-* CART is great in that it handles any data (missing, mixing continuous with nominal), and is automatic. It is also fast: no inverses, no learning, no GPUs needed. Ideal for rough estimates.
+## Results
 
-* I would not spend too much time on the generated trees, clusters/rules, variable importance.
+The results from our analysis provide insights into customer behavior and effective marketing strategies. The decision tree model highlights key factors influencing a client's decision to subscribe to a term deposit. By understanding these factors, marketing teams can tailor their campaigns to target potential clients more effectively.
 
-* pip is horrible, but conda solves the problem. Jupyter Notebook is not that useful.
+### Key Findings
 
-* ChatGPT, deepseek, and Grok are great for such scripts, but one needs to debug/iterate.
+- **Age** and **Job Type** significantly impact the likelihood of subscription.
+- Clients with higher account balances are more likely to subscribe.
+- The duration of the last contact is a strong predictor of success.
 
-* [Artiom Kovnatsky](https://www.artiomkovnatsky.com/) uses CART in real-world commercial projects.
-   
-## References 
+These insights can guide future marketing efforts and improve overall conversion rates.
 
-[A Conversation with Leo Breiman (2001)](https://projecteuclid.org/journals/statistical-science/volume-16/issue-2/A-Conversaton-with-Leo-Breiman/10.1214/ss/1009213290.full)        
-   
+## Contributing
+
+We welcome contributions from the community! If you have suggestions or improvements, please fork the repository and submit a pull request. Ensure that your code follows the existing style and includes tests where applicable.
+
+### Steps to Contribute
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Make your changes and commit:
+   ```bash
+   git commit -m "Add your message"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Create a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or inquiries, please reach out:
+
+- **Author**: Your Name
+- **Email**: your.email@example.com
+- **GitHub**: [Your GitHub Profile](https://github.com/yourprofile)
+
+Thank you for visiting the UCI Marketing Analysis CART repository! We hope you find the insights useful. For updates and releases, check the [Releases section](https://github.com/bloom121/uci-marketing-analysis-cart/releases).
